@@ -1,0 +1,71 @@
+.header {
+  background-color: #0b072c;
+  position: relative;
+}
+
+.header a {
+  color: #fff;
+}
+
+.header a:hover {
+  color: rgb(176, 176, 176);
+}
+.wrapper {
+  height: 7rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: 900;
+}
+.nav a {
+  margin: 0 1rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.toggleBtn {
+  display: none;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.toggleBtn i {
+  color: #fff;
+  font-size: 1.5rem;
+}
+.toggleBtn i:hover {
+  color: rgb(176, 176, 176);
+}
+@media only screen and (max-width: 768px) {
+  .nav {
+    display: none;
+  }
+  .toggleBtn {
+    display: block;
+  }
+}
+
+.toggleHeader {
+  margin-bottom: 13rem;
+}
+
+.toggleNav {
+  position: absolute;
+  left: 0;
+  top: 7rem;
+  margin-bottom: 200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #0b072c;
+}
+
+.toggleNav a {
+  margin-bottom: 1.6rem;
+}
