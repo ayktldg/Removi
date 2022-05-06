@@ -3,9 +3,14 @@ import MovieCard from "../components/MovieCard";
 import useFetch from "../hooks/useFetch";
 import { useLocation } from "react-router-dom";
 
-const MovieListPage = () => {
+const MoviesByFeature = () => {
   const pathName = useLocation().pathname;
-  const { data: movies, isLoading, error, pageTitle } = useFetch(pathName);
+  const {
+    data: movies,
+    isLoading,
+    error,
+    pageTitle,
+  } = useFetch(`movie${pathName}`);
 
   return (
     <div>
@@ -14,7 +19,7 @@ const MovieListPage = () => {
       {isLoading ? (
         <p>Loading</p>
       ) : !error ? (
-        movies.map((movie) => <MovieCard movie={movie} />)
+        movies.map((movie) => <MovieCard movie={movie} key={movie.id} />)
       ) : (
         <h3>{error}</h3>
       )}
@@ -22,4 +27,4 @@ const MovieListPage = () => {
   );
 };
 
-export default MovieListPage;
+export default MoviesByFeature;

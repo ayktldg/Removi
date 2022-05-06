@@ -2,14 +2,17 @@ import Navbar from "../components/Navbar";
 import MovieCard from "../components/MovieCard";
 import useFetch from "../hooks/useFetch";
 import Searchbar from "../components/Searchbar";
+import { useLocation } from "react-router-dom";
 
-const Home = () => {
+const SearchResultPage = () => {
+  let location = useLocation();
+
   const {
     data: movies,
     isLoading,
     error,
     pageTitle,
-  } = useFetch("movie/popular");
+  } = useFetch("search/movie", location.state.query);
 
   return (
     <div>
@@ -27,4 +30,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default SearchResultPage;
