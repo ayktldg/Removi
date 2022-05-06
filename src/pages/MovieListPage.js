@@ -1,9 +1,11 @@
 import Navbar from "../components/Navbar";
 import MovieCard from "../components/MovieCard";
 import useFetch from "../hooks/useFetch";
+import { useLocation } from "react-router-dom";
 
-const Home = () => {
-  const { data: movies, isLoading, error, pageTitle } = useFetch("/popular");
+const MovieListPage = () => {
+  const pathName = useLocation().pathname;
+  const { data: movies, isLoading, error, pageTitle } = useFetch(pathName);
 
   return (
     <div>
@@ -20,4 +22,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default MovieListPage;

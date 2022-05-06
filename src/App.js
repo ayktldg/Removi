@@ -1,8 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import TopRated from "./pages/TopRated";
-import NowPlaying from "./pages/NowPlaying";
-import Upcoming from "./pages/Upcoming";
+import MovieListPage from "./pages/MovieListPage";
 import { ToggleMenuProvider } from "./context/ToggleMenuContext";
 
 function App() {
@@ -11,9 +9,9 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/top-rated" element={<TopRated />} />
-          <Route path="/now-playing" element={<NowPlaying />} />
-          <Route path="/upcoming" element={<Upcoming />} />
+          <Route path="top_rated" element={<MovieListPage />} />
+          <Route path="now_playing" element={<MovieListPage />} />
+          <Route path="upcoming" element={<MovieListPage />} />
         </Routes>
       </BrowserRouter>
     </ToggleMenuProvider>

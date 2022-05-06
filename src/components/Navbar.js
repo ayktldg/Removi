@@ -19,16 +19,16 @@ const Navbar = () => {
               REMOVI
             </Link>
           </div>
-          <div
+          <nav
             className={`${navbarStyle.nav} ${
               isMenuOpen ? navbarStyle.toggleNav : ""
             }`}
           >
             <Link to="/">Home</Link>
-            <Link to="/top-rated">Top Rated</Link>
-            <Link to="/now-playing">Now Playing</Link>
+            <Link to="/top_rated">Top Rated</Link>
+            <Link to="/now_playing">Now Playing</Link>
             <Link to="/upcoming">Upcoming</Link>
-          </div>
+          </nav>
           <button
             onClick={() => onclickToggleMenu()}
             className={navbarStyle.toggleBtn}
