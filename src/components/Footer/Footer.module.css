@@ -1,0 +1,27 @@
+.footer {
+  background-color: rgb(11, 4, 44);
+  color: white;
+}
+.a {
+  color: white;
+}
+a:hover {
+  opacity: 0.8;
+  color: gray;
+}
+.madeBy a {
+  color: red;
+}
+.icon {
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+@media (max-width: 575.98px) {
+  .footer {
+    flex-direction: column;
+  }
+}

@@ -1,8 +1,9 @@
-import Navbar from "../components/Navbar";
-import MovieCard from "../components/MovieCard";
+import Navbar from "../components/Navbar/Navbar";
+import MovieCard from "../components/MovieCard/MovieCard";
 import { useContext, useEffect } from "react";
 import MovieContext from "../context/MovieContext";
-import Searchbar from "../components/Searchbar";
+import Searchbar from "../components/Searchbar/Searchbar";
+import Footer from "../components/Footer/Footer";
 
 const Home = () => {
   const { data, isLoading, error, pageTitle, getMovieByFeature } =
@@ -24,6 +25,7 @@ const Home = () => {
       ) : (
         <h3>{error}</h3>
       )}
+      <Footer />
     </div>
   );
 };
