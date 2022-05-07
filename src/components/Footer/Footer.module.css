@@ -1,27 +1,36 @@
 .footer {
-  background-color: rgb(11, 4, 44);
-  color: white;
+  background-color: #0b072c;
+  color: #fff;
+  font-size: 1.1rem;
 }
-.a {
-  color: white;
-}
-a:hover {
-  opacity: 0.8;
-  color: gray;
+a {
+  color: #fff;
 }
 .madeBy a {
   color: red;
 }
+
+a:hover,
+.madeBy a:hover {
+  color: rgb(176, 176, 176);
+}
+
+.wrapper {
+  height: 7rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .icon {
-  display: inline-block;
   width: 1.5em;
   height: 1.5em;
-  stroke-width: 0;
-  stroke: currentColor;
-  fill: currentColor;
+  margin: 0 1rem;
 }
-@media (max-width: 575.98px) {
-  .footer {
+@media only screen and (max-width: 768px) {
+  .wrapper {
     flex-direction: column;
+    justify-content: space-around;
+    padding: 1rem 0;
   }
 }
