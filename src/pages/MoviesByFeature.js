@@ -1,5 +1,6 @@
-import Navbar from "../components/Navbar";
-import MovieCard from "../components/MovieCard";
+import Navbar from "../components/Navbar/Navbar";
+import MovieCard from "../components/MovieCard/MovieCard";
+import Footer from "../components/Footer/Footer";
 import { useLocation } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import MovieContext from "../context/MovieContext";
@@ -25,6 +26,7 @@ const MoviesByFeature = () => {
       ) : (
         <h3>{error}</h3>
       )}
+      <Footer />
     </div>
   );
 };

@@ -1,7 +1,7 @@
-import useToggle from "../hooks/useToggle";
+import useToggle from "../../hooks/useToggle";
 import { Link } from "react-router-dom";
-import layout from "../style/Layout.module.css";
-import navbarStyle from ".//Navbar.module.css";
+import layout from "../../style/Layout.module.css";
+import navbarStyle from "./Navbar.module.css";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useToggle();

@@ -1,0 +1,36 @@
+.footer {
+  background-color: #0b072c;
+  color: #fff;
+  font-size: 1.1rem;
+}
+a {
+  color: #fff;
+}
+.madeBy a {
+  color: red;
+}
+
+a:hover,
+.madeBy a:hover {
+  color: rgb(176, 176, 176);
+}
+
+.wrapper {
+  height: 7rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.icon {
+  width: 1.5em;
+  height: 1.5em;
+  margin: 0 1rem;
+}
+@media only screen and (max-width: 768px) {
+  .wrapper {
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 1rem 0;
+  }
+}

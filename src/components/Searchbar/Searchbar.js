@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import debounce from "lodash/debounce";
-import API from "../utils/api";
+import API from "../../utils/api";
 
 const Searchbar = () => {
   let navigate = useNavigate();
