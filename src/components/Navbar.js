@@ -1,11 +1,11 @@
-import { useContext } from "react";
+import useToggle from "../hooks/useToggle";
 import { Link } from "react-router-dom";
-import ToggleMenuContext from "../context/ToggleMenuContext";
 import layout from "../style/Layout.module.css";
-import navbarStyle from "../style/Navbar.module.css";
+import navbarStyle from ".//Navbar.module.css";
 
 const Navbar = () => {
-  const { isMenuOpen, onclickToggleMenu } = useContext(ToggleMenuContext);
+  const [isMenuOpen, setIsMenuOpen] = useToggle();
+
   return (
     <header
       className={`${navbarStyle.header} ${
@@ -29,10 +29,7 @@ const Navbar = () => {
             <Link to="/now_playing">Now Playing</Link>
             <Link to="/upcoming">Upcoming</Link>
           </nav>
-          <button
-            onClick={() => onclickToggleMenu()}
-            className={navbarStyle.toggleBtn}
-          >
+          <button onClick={setIsMenuOpen} className={navbarStyle.toggleBtn}>
             <i className="fa fa-bars"></i>
           </button>
         </div>
