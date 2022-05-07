@@ -1,28 +1,28 @@
 import Navbar from "../components/Navbar";
 import MovieCard from "../components/MovieCard";
-import useFetch from "../hooks/useFetch";
+import { useContext, useEffect } from "react";
+import MovieContext from "../context/MovieContext";
 import Searchbar from "../components/Searchbar";
 import { useLocation } from "react-router-dom";
 
 const SearchResultPage = () => {
-  let location = useLocation();
+  let searchQuery = useLocation().state.query;
 
-  const {
-    data: movies,
-    isLoading,
-    error,
-    pageTitle,
-  } = useFetch("search/movie", location.state.query);
+  const { data, isLoading, error, getMovieBySearch } = useContext(MovieContext);
+
+  useEffect(() => {
+    getMovieBySearch(searchQuery);
+  }, [searchQuery]);
 
   return (
     <div>
       <Navbar />
       <Searchbar />
-      <h2>{pageTitle}</h2>
+      <h2>Search Results</h2>
       {isLoading ? (
         <p>Loading</p>
       ) : !error ? (
-        movies.map((movie) => <MovieCard movie={movie} key={movie.id} />)
+        data.map((movie) => <MovieCard movie={movie} key={movie.id} />)
       ) : (
         <h3>{error}</h3>
       )}

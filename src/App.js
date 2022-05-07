@@ -2,11 +2,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import MoviesByFeature from "./pages/MoviesByFeature";
 import SearchResultPage from "./pages/SearchResultPage";
-import { ToggleMenuProvider } from "./context/ToggleMenuContext";
+import { MovieProvider } from "./context/MovieContext";
 
 function App() {
   return (
-    <ToggleMenuProvider>
+    <MovieProvider>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -19,7 +19,7 @@ function App() {
           />
         </Routes>
       </BrowserRouter>
-    </ToggleMenuProvider>
+    </MovieProvider>
   );
 }
 

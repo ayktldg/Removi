@@ -1,15 +1,16 @@
 import Navbar from "../components/Navbar";
 import MovieCard from "../components/MovieCard";
-import useFetch from "../hooks/useFetch";
+import { useContext, useEffect } from "react";
+import MovieContext from "../context/MovieContext";
 import Searchbar from "../components/Searchbar";
 
 const Home = () => {
-  const {
-    data: movies,
-    isLoading,
-    error,
-    pageTitle,
-  } = useFetch("movie/popular");
+  const { data, isLoading, error, pageTitle, getMovieByFeature } =
+    useContext(MovieContext);
+
+  useEffect(() => {
+    getMovieByFeature("/popular");
+  }, []);
 
   return (
     <div>
@@ -19,7 +20,7 @@ const Home = () => {
       {isLoading ? (
         <p>Loading</p>
       ) : !error ? (
-        movies.map((movie) => <MovieCard movie={movie} key={movie.id} />)
+        data.map((movie) => <MovieCard movie={movie} key={movie.id} />)
       ) : (
         <h3>{error}</h3>
       )}
