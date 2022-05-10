@@ -16,7 +16,7 @@ const MovieCard = ({ movie }) => {
         <div className={styles.body}>
           <span className={styles.rank}>{movie.vote_average}</span>
           <h5 className={styles.title}>{movie.title}</h5>
-          <small className={styles.releaseDate}>{movie.release_date}</small>
+          <span className={styles.date}>{movie.release_date}</span>
         </div>
       </li>
     </Link>

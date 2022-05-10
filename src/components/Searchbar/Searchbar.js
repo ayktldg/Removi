@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import debounce from "lodash/debounce";
 import API from "../../utils/api";
+import styles from "./Searchbar.module.css";
 
 const Searchbar = () => {
   let navigate = useNavigate();
@@ -18,7 +19,12 @@ const Searchbar = () => {
 
   return (
     <div>
-      <input type="text" onChange={(e) => handleSearchMovie(e.target.value)} />
+      <input
+        type="text"
+        onChange={(e) => handleSearchMovie(e.target.value)}
+        className={styles.searchbar}
+        placeholder="Enter movie name.."
+      />
     </div>
   );
 };

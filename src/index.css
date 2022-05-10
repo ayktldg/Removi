@@ -8,6 +8,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+h2 {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  font-size: 2em;
+}
+
 ul {
   margin: 0;
   padding: 0;

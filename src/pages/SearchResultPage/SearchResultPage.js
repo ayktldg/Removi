@@ -5,6 +5,7 @@ import MovieContext from "../../context/MovieContext";
 import Searchbar from "../../components/Searchbar/Searchbar";
 import { useLocation } from "react-router-dom";
 import MovieList from "../../components/MovieList/MovieList";
+import layout from "../../style/Layout.module.css";
 
 const SearchResultPage = () => {
   let searchQuery = useLocation().state.query;
@@ -18,15 +19,17 @@ const SearchResultPage = () => {
   return (
     <div>
       <Navbar />
-      <Searchbar />
-      <h2>Search Results</h2>
-      {isLoading ? (
-        <p>Loading</p>
-      ) : !error ? (
-        <MovieList movies={data} />
-      ) : (
-        <h3>{error}</h3>
-      )}
+      <div className={layout.container}>
+        <Searchbar />
+        <h2>Search Results</h2>
+        {isLoading ? (
+          <p>Loading</p>
+        ) : !error ? (
+          <MovieList movies={data} />
+        ) : (
+          <h3>{error}</h3>
+        )}
+      </div>
       <Footer />
     </div>
   );
