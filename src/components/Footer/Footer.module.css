@@ -3,14 +3,14 @@
   color: #fff;
   font-size: 1.1rem;
 }
-a {
+.footer a {
   color: #fff;
 }
 .madeBy a {
   color: red;
 }
 
-a:hover,
+.footer a:hover,
 .madeBy a:hover {
   color: rgb(176, 176, 176);
 }

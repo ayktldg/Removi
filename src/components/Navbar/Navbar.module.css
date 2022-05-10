@@ -7,7 +7,7 @@
   color: #fff;
 }
 
-a:hover {
+.header a:hover {
   color: rgb(176, 176, 176);
 }
 .wrapper {

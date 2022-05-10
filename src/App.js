@@ -1,8 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import MoviesByFeature from "./pages/MoviesByFeature";
-import SearchResultPage from "./pages/SearchResultPage";
+import Home from "./pages/Home/Home";
+import MoviesByFeature from "./pages/MoviesByFeature/MoviesByFeature";
+import SearchResultPage from "./pages/SearchResultPage/SearchResultPage";
 import { MovieProvider } from "./context/MovieContext";
+import MovieDetail from "./pages/MovieDetail/MovieDetail";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route path="/top_rated" element={<MoviesByFeature />} />
           <Route path="/now_playing" element={<MoviesByFeature />} />
           <Route path="/upcoming" element={<MoviesByFeature />} />
+          <Route path="/movie_detail/:movieId" element={<MovieDetail />} />
           <Route
             path="/search/movie/:searchKeyword"
             element={<SearchResultPage />}

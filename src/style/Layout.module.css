@@ -4,3 +4,9 @@
   margin-right: auto;
   padding: 0 2rem;
 }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10.2rem, 1fr));
+  gap: 1.2rem;
+}
