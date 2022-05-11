@@ -9,7 +9,7 @@ import layout from "../../style/Layout.module.css";
 const MoviesByFeature = () => {
   const endpoint = useLocation().pathname;
 
-  const { data, isLoading, error, pageTitle, getMovieByFeature } =
+  const { movies, isLoading, error, pageTitle, getMovieByFeature } =
     useContext(MovieContext);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const MoviesByFeature = () => {
         {isLoading ? (
           <p>Loading</p>
         ) : !error ? (
-          <MovieList movies={data} />
+          <MovieList movies={movies} />
         ) : (
           <h3>{error}</h3>
         )}

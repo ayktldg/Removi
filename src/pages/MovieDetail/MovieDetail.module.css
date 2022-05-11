@@ -56,20 +56,60 @@
   background-color: rgb(13, 3, 61);
   border: 2px solid yellowgreen;
   border-radius: 50%;
-  width: 2rem;
-  height: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.3rem;
+  padding: 0.4rem;
   color: white;
   font-weight: bold;
-  margin-right: 0.5rem;
+  margin-right: 0.7rem;
 }
 
 .rankType {
   font-weight: bold;
   width: 3rem;
+}
+
+.playBtn {
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.playBtn:hover {
+  color: rgb(176, 176, 176);
+}
+
+.icon {
+  margin-right: 0.5rem;
+}
+
+.bookmark {
+  margin-left: 2rem;
+  position: relative;
+  cursor: pointer;
+}
+
+.bookmark:hover {
+  color: rgb(176, 176, 176);
+}
+
+.bookmarkTooltip {
+  visibility: hidden;
+  width: 7rem;
+  background-color: rgb(22, 22, 22);
+  color: #fff;
+  border-radius: 6px;
+  padding: 0.2rem;
+  position: absolute;
+  bottom: -1.4rem;
+  left: -3rem;
+}
+
+.bookmark:hover .bookmarkTooltip {
+  visibility: visible;
 }
 
 @media only screen and (max-width: 768px) {

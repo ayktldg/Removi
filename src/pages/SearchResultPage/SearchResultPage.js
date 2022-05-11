@@ -10,7 +10,8 @@ import layout from "../../style/Layout.module.css";
 const SearchResultPage = () => {
   let searchQuery = useLocation().state.query;
 
-  const { data, isLoading, error, getMovieBySearch } = useContext(MovieContext);
+  const { movies, isLoading, error, getMovieBySearch } =
+    useContext(MovieContext);
 
   useEffect(() => {
     getMovieBySearch(searchQuery);
@@ -25,7 +26,7 @@ const SearchResultPage = () => {
         {isLoading ? (
           <p>Loading</p>
         ) : !error ? (
-          <MovieList movies={data} />
+          <MovieList movies={movies} />
         ) : (
           <h3>{error}</h3>
         )}

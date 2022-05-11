@@ -1,14 +1,23 @@
-import { createContext, useState } from "react";
+//import { createContext, useState } from "react";
 import axios from "axios";
 import API from "../utils/api";
 
-const MovieContext = createContext();
+import { createContext, useReducer } from "react";
+import reducer from "./MovieReducer";
+
+const initialState = {
+  movies: [],
+  movieDetail: {},
+  cast: [],
+  isLoading: true,
+  error: "",
+  pageTitle: "",
+};
+
+const MovieContext = createContext(initialState);
 
 export const MovieProvider = ({ children }) => {
-  const [data, setData] = useState();
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState("");
-  const [pageTitle, setPageTitle] = useState();
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const getMovieByFeature = async (endpoint) => {
     handlePageTitle(endpoint);
@@ -22,31 +31,20 @@ export const MovieProvider = ({ children }) => {
           },
         }
       );
-      setData(response.data.results);
+      dispatch({
+        type: "GET_MOVIES",
+        payload: response.data.results,
+      });
     } catch (err) {
-      setError(err.message);
+      dispatch({
+        type: "FETCH_ERROR",
+        payload: err.message,
+      });
     } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const getMovieDetail = async (endpoint) => {
-    console.log(endpoint);
-    try {
-      const response = await axios.get(
-        `${API.BASE_URL}${API.MOVIE}${endpoint}`,
-        {
-          params: {
-            api_key: API.API_KEY,
-            append_to_response: "videos",
-          },
-        }
-      );
-      setData(response.data);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setIsLoading(false);
+      dispatch({
+        type: "CHANGE_LOADING_STATUS",
+        payload: false,
+      });
     }
   };
 
@@ -62,36 +60,102 @@ export const MovieProvider = ({ children }) => {
           },
         }
       );
-      setData(response.data.results);
+      dispatch({
+        type: "GET_MOVIES",
+        payload: response.data.results,
+      });
     } catch (err) {
-      setError(err.message);
+      dispatch({
+        type: "FETCH_ERROR",
+        payload: err.message,
+      });
     } finally {
-      setIsLoading(false);
+      dispatch({
+        type: "CHANGE_LOADING_STATUS",
+        payload: false,
+      });
+    }
+  };
+
+  const getMovieDetail = async (endpoint) => {
+    handlePageTitle(endpoint);
+    try {
+      const response = await axios.get(
+        `${API.BASE_URL}${API.MOVIE}${endpoint}`,
+        {
+          params: {
+            api_key: API.API_KEY,
+            append_to_response: "videos",
+          },
+        }
+      );
+      dispatch({
+        type: "GET_MOVIE_DETAIL",
+        payload: response.data,
+      });
+    } catch (err) {
+      dispatch({
+        type: "FETCH_ERROR",
+        payload: err.message,
+      });
+    } finally {
+      dispatch({
+        type: "CHANGE_LOADING_STATUS",
+        payload: false,
+      });
+    }
+  };
+
+  const getCast = async (endpoint) => {
+    try {
+      const response = await axios.get(
+        `${API.BASE_URL}${API.MOVIE}${endpoint}${API.CREDITS}`,
+        {
+          params: { api_key: API.API_KEY },
+        }
+      );
+      dispatch({
+        type: "GET_CAST",
+        payload: response.data.cast,
+      });
+    } catch (err) {
+      dispatch({
+        type: "FETCH_ERROR",
+        payload: err.message,
+      });
+    } finally {
+      dispatch({
+        type: "CHANGE_LOADING_STATUS",
+        payload: false,
+      });
     }
   };
 
   const handlePageTitle = (endpoint) => {
     if (endpoint === "/popular") {
-      setPageTitle("Popular Movies");
+      dispatch({ type: "SET_PAGE_TITLE", payload: "Popular Movies" });
     } else if (endpoint === "/top_rated") {
-      setPageTitle("Top Rated Movies");
+      dispatch({ type: "SET_PAGE_TITLE", payload: "Top Rated Movies" });
     } else if (endpoint === "/now_playing") {
-      setPageTitle("Now Playing Movies");
+      dispatch({ type: "SET_PAGE_TITLE", payload: "Now Playing" });
     } else if (endpoint === "/upcoming") {
-      setPageTitle("Upcoming Movies");
+      dispatch({ type: "SET_PAGE_TITLE", payload: "Upcoming Movies" });
     }
   };
 
   return (
     <MovieContext.Provider
       value={{
-        data,
-        isLoading,
-        error,
-        pageTitle,
+        movies: state.movies,
+        movieDetail: state.movieDetail,
+        cast: state.cast,
+        isLoading: state.isLoading,
+        error: state.error,
+        pageTitle: state.pageTitle,
         getMovieByFeature,
         getMovieBySearch,
         getMovieDetail,
+        getCast,
       }}
     >
       {children}

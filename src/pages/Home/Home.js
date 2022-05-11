@@ -8,7 +8,7 @@ import layout from "../../style/Layout.module.css";
 import styles from "./Home.module.css";
 
 const Home = () => {
-  const { data, isLoading, error, pageTitle, getMovieByFeature } =
+  const { movies, isLoading, error, pageTitle, getMovieByFeature } =
     useContext(MovieContext);
 
   useEffect(() => {
@@ -32,7 +32,7 @@ const Home = () => {
         {isLoading ? (
           <p>Loading</p>
         ) : !error ? (
-          <MovieList movies={data} />
+          <MovieList movies={movies} />
         ) : (
           <h3>{error}</h3>
         )}
