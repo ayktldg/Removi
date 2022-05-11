@@ -30,6 +30,26 @@ export const MovieProvider = ({ children }) => {
     }
   };
 
+  const getMovieDetail = async (endpoint) => {
+    console.log(endpoint);
+    try {
+      const response = await axios.get(
+        `${API.BASE_URL}${API.MOVIE}${endpoint}`,
+        {
+          params: {
+            api_key: API.API_KEY,
+            append_to_response: "videos",
+          },
+        }
+      );
+      setData(response.data);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const getMovieBySearch = async (query) => {
     try {
       const response = await axios.get(
@@ -71,6 +91,7 @@ export const MovieProvider = ({ children }) => {
         pageTitle,
         getMovieByFeature,
         getMovieBySearch,
+        getMovieDetail,
       }}
     >
       {children}

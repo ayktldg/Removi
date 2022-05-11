@@ -4,7 +4,6 @@ export const API = {
   IMAGE_URL: "https://image.tmdb.org/t/p/w500/",
   MOVIE: "movie",
   SEARCH: "search/",
-  CREDITS: "/credits",
 };
 
 export default API;

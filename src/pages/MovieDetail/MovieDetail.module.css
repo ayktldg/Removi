@@ -1,0 +1,84 @@
+.background {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  color: #fff;
+}
+
+.backgroundCover {
+  background-color: rgb(38, 38, 38);
+  opacity: 0.9;
+}
+
+.detailGrid {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  column-gap: 2rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.title {
+  margin-bottom: 0.5rem;
+}
+
+.featureList {
+  display: flex;
+  padding-left: 1rem;
+}
+
+.featureList > li {
+  list-style-type: disc;
+  margin-right: 2rem;
+}
+
+.genreList {
+  display: flex;
+}
+
+.genreListItem {
+  margin-right: 0.5rem;
+}
+
+.selection {
+  display: flex;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.rankWrapper {
+  display: flex;
+  align-items: center;
+  margin-right: 2rem;
+}
+
+.rank {
+  background-color: rgb(13, 3, 61);
+  border: 2px solid yellowgreen;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.3rem;
+  color: white;
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+.rankType {
+  font-weight: bold;
+  width: 3rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .detailGrid {
+    grid-template-columns: 1fr;
+  }
+  .poster {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
