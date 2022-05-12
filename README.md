@@ -13,10 +13,10 @@ React, React Router, Context Api, Axios, Tmdb Api
 
 ### Must Have
 
-- [ ] Listing movies according to their features like top rated, popular, upcoming etc.
-- [ ] Movie search
-- [ ] Viewing movie detail
-- [ ] Watching the movie trailer
+- [x] Listing movies according to their features like top rated, popular, upcoming etc.
+- [x] Movie search
+- [x] Viewing movie detail
+- [x] Watching the movie trailer
 
 ### Nice To Have
 
