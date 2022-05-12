@@ -27,3 +27,12 @@
   font-size: 0.9rem;
   color: rgb(83, 83, 83);
 }
+
+@media (max-width: 576px) {
+  .card {
+    height: 28rem;
+  }
+  .imageWrapper {
+    height: 22rem;
+  }
+}

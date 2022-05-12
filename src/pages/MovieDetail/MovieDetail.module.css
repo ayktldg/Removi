@@ -71,44 +71,53 @@
   width: 3rem;
 }
 
+.icons {
+  display: flex;
+  align-items: center;
+}
+
 .iconWrapper {
+  display: flex;
+  align-items: center;
   position: relative;
   cursor: pointer;
-  margin-left: 3rem;
+  margin-left: 2rem;
+  font-size: 1.3rem;
 }
 
 .iconWrapper:hover {
   color: rgb(176, 176, 176);
-  font-size: 1rem;
 }
+
 .icon {
-  font-size: 1.5rem;
+  margin-right: 0.5rem;
 }
 
-.tooltip {
-  text-align: center;
-  visibility: hidden;
-  width: 7rem;
-  background-color: rgb(22, 22, 22);
-  color: #fff;
-  border-radius: 0.2rem;
-  padding: 0.2rem;
-  position: absolute;
-  bottom: -1.6rem;
-  left: -3rem;
+.tagline {
+  font-weight: 300;
+  font-style: italic;
 }
 
-.iconWrapper:hover .tooltip {
-  visibility: visible;
+@media (max-width: 576px) {
+  .title {
+    font-size: 1.8em;
+    margin-bottom: 1rem;
+  }
+  .genreList {
+    flex-direction: column;
+  }
+  .icons {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .iconWrapper {
+    margin: 0.5rem 1rem;
+    font-size: 1.2rem;
+  }
 }
 
-@media only screen and (max-width: 768px) {
+@media (max-width: 768px) {
   .detailGrid {
     grid-template-columns: 1fr;
-  }
-  .poster {
-    width: 70%;
-    margin-left: auto;
-    margin-right: auto;
   }
 }

@@ -9,6 +9,7 @@ const initialState = {
   movies: [],
   movieDetail: {},
   cast: [],
+  isTrailerPlay: false,
   isLoading: true,
   error: "",
   pageTitle: "",
@@ -143,12 +144,17 @@ export const MovieProvider = ({ children }) => {
     }
   };
 
+  const handleTrailerPlay = (status) => {
+    dispatch({ type: "SET_IS_TRAILER_PLAY", payload: status });
+  };
+
   return (
     <MovieContext.Provider
       value={{
         movies: state.movies,
         movieDetail: state.movieDetail,
         cast: state.cast,
+        isTrailerPlay: state.isTrailerPlay,
         isLoading: state.isLoading,
         error: state.error,
         pageTitle: state.pageTitle,
@@ -156,6 +162,7 @@ export const MovieProvider = ({ children }) => {
         getMovieBySearch,
         getMovieDetail,
         getCast,
+        handleTrailerPlay,
       }}
     >
       {children}

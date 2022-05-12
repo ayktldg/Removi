@@ -12,8 +12,15 @@ import MovieFrame from "../../components/MovieFrame/MovieFrame";
 
 const MovieDetail = () => {
   const params = useParams();
-  const { movieDetail, cast, isLoading, getMovieDetail, getCast } =
-    useContext(MovieContext);
+  const {
+    movieDetail,
+    cast,
+    isLoading,
+    isTrailerPlay,
+    handleTrailerPlay,
+    getMovieDetail,
+    getCast,
+  } = useContext(MovieContext);
 
   useEffect(() => {
     getMovieDetail(`/${params.movieId}`);
@@ -44,9 +51,6 @@ const MovieDetail = () => {
                 <h2 className={styles.title}>{movieDetail.title}</h2>
                 <ul className={styles.featureList}>
                   <li>
-                    <small>{movieDetail.release_date}</small>
-                  </li>
-                  <li>
                     <ul className={styles.genreList}>
                       {movieDetail.genres &&
                         movieDetail.genres.map((genre) => (
@@ -55,6 +59,9 @@ const MovieDetail = () => {
                           </li>
                         ))}
                     </ul>
+                  </li>
+                  <li>
+                    <small>{movieDetail.release_date}</small>
                   </li>
                   <li>
                     <small>{movieDetail.runtime} min</small>
@@ -70,21 +77,21 @@ const MovieDetail = () => {
                   <div className={styles.icons}>
                     <span
                       className={styles.iconWrapper}
-                      onClick={() => console.log("hello")}
+                      onClick={() => handleTrailerPlay(true)}
                     >
                       <FontAwesomeIcon className={styles.icon} icon={faPlay} />
-                      <small className={styles.tooltip}>Play trailer</small>
+                      <small>Play trailer</small>
                     </span>
                     <span className={styles.iconWrapper}>
                       <FontAwesomeIcon
                         className={styles.icon}
                         icon={faBookmark}
                       />
-                      <small className={styles.tooltip}>Add to watchlist</small>
+                      <small>Add to watchlist</small>
                     </span>
                   </div>
                 </div>
-                <h5 className={styles.tagline}>{movieDetail.tagline}</h5>
+                <p className={styles.tagline}>{movieDetail.tagline}</p>
                 <h3>Overview</h3>
                 <p>{movieDetail.overview}</p>
               </div>
@@ -93,7 +100,7 @@ const MovieDetail = () => {
         </div>
       )}
       {isLoading ? <h2>Loading</h2> : <CastList cast={cast} />}
-      <MovieFrame />
+      {isTrailerPlay && <MovieFrame path={movieDetail.videos.results[0].key} />}
     </>
   );
 };

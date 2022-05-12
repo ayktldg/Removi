@@ -25,6 +25,11 @@ const reducer = (state, action) => {
         ...state,
         pageTitle: action.payload,
       };
+    case "SET_IS_TRAILER_PLAY":
+      return {
+        ...state,
+        isTrailerPlay: action.payload,
+      };
     case "CHANGE_LOADING_STATUS":
       return {
         ...state,

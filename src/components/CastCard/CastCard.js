@@ -2,7 +2,6 @@ import API from "../../utils/api";
 import styles from "./CastCard.module.css";
 
 const CastCard = ({ person }) => {
-  console.log(person);
   return (
     <li className={styles.card}>
       <div className={styles.imageWrapper}>
