@@ -1,0 +1,29 @@
+.card {
+  height: 20rem;
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.1rem 0.3rem rgba(0, 0, 0, 0.3);
+  color: black;
+}
+
+.imageWrapper {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  width: 100%;
+  height: 13rem;
+  overflow: hidden;
+}
+
+.body {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.name {
+  margin-bottom: 0.4rem;
+}
+
+.character {
+  font-size: 0.9rem;
+  color: rgb(83, 83, 83);
+}

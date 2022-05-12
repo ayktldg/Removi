@@ -67,19 +67,20 @@ const MovieDetail = () => {
                     </span>
                     <small className={styles.rankType}>IMDB Rank</small>
                   </div>
-                  <div className={styles.buttons}>
+                  <div className={styles.icons}>
                     <span
-                      className={styles.playBtn}
+                      className={styles.iconWrapper}
                       onClick={() => console.log("hello")}
                     >
                       <FontAwesomeIcon className={styles.icon} icon={faPlay} />
-                      Play trailer
+                      <small className={styles.tooltip}>Play trailer</small>
                     </span>
-                    <span className={styles.bookmark}>
-                      <FontAwesomeIcon icon={faBookmark} />
-                      <small class={styles.bookmarkTooltip}>
-                        Add to watchlist
-                      </small>
+                    <span className={styles.iconWrapper}>
+                      <FontAwesomeIcon
+                        className={styles.icon}
+                        icon={faBookmark}
+                      />
+                      <small className={styles.tooltip}>Add to watchlist</small>
                     </span>
                   </div>
                 </div>

@@ -49,15 +49,14 @@
 .rankWrapper {
   display: flex;
   align-items: center;
-  margin-right: 2rem;
 }
 
 .rank {
   background-color: rgb(13, 3, 61);
   border: 2px solid yellowgreen;
   border-radius: 50%;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2.2rem;
+  height: 2.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -72,43 +71,34 @@
   width: 3rem;
 }
 
-.playBtn {
-  font-size: 0.9rem;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.playBtn:hover {
-  color: rgb(176, 176, 176);
-}
-
-.icon {
-  margin-right: 0.5rem;
-}
-
-.bookmark {
-  margin-left: 2rem;
+.iconWrapper {
   position: relative;
   cursor: pointer;
+  margin-left: 3rem;
 }
 
-.bookmark:hover {
+.iconWrapper:hover {
   color: rgb(176, 176, 176);
+  font-size: 1rem;
+}
+.icon {
+  font-size: 1.5rem;
 }
 
-.bookmarkTooltip {
+.tooltip {
+  text-align: center;
   visibility: hidden;
   width: 7rem;
   background-color: rgb(22, 22, 22);
   color: #fff;
-  border-radius: 6px;
+  border-radius: 0.2rem;
   padding: 0.2rem;
   position: absolute;
-  bottom: -1.4rem;
+  bottom: -1.6rem;
   left: -3rem;
 }
 
-.bookmark:hover .bookmarkTooltip {
+.iconWrapper:hover .tooltip {
   visibility: visible;
 }
 
