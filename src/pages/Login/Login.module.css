@@ -1,0 +1,26 @@
+.errorMessage {
+  background-color: red;
+  color: white;
+  padding: 0.5rem;
+  font-weight: bold;
+}
+
+.errorMessage {
+  width: 40%;
+}
+
+.registerLink:hover {
+  color: #0b072c;
+}
+
+@media (max-width: 768px) {
+  .errorMessage {
+    width: 70%;
+  }
+}
+
+@media (max-width: 576px) {
+  .errorMessage {
+    width: 100%;
+  }
+}

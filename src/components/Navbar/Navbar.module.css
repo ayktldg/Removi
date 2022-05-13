@@ -23,8 +23,7 @@
 }
 
 .nav a {
-  margin: 0 1rem;
-  font-size: 1.1rem;
+  margin: 0 0.5rem;
   font-weight: 500;
 }
 
@@ -43,6 +42,22 @@
   color: rgb(176, 176, 176);
 }
 
+.nav .loginBtn {
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  background-color: #fff;
+  border-radius: 0.8rem;
+  color: #140d56;
+  font-weight: bold;
+  font-size: inherit;
+}
+
+.nav .loginBtn:hover {
+  color: #140d56;
+  background-color: rgb(176, 176, 176);
+}
+
 @media (max-width: 768px) {
   .nav {
     display: none;
@@ -51,7 +66,8 @@
     margin-bottom: 11rem;
   }
 
-  .toggleNav a {
+  .toggleNav a,
+  .loginBtn {
     margin-bottom: 1.6rem;
   }
   .toggleNav {
