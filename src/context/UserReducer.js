@@ -14,12 +14,21 @@ const reducer = (state, action) => {
     case "ADD_BOOKMARK":
       return {
         ...state,
-        cast: action.payload,
+        users: state.users.map((user, index) => {
+          index === action.payload.userIndex &&
+            user.favorites.push(action.payload.movie);
+          return user;
+        }),
       };
     case "REMOVE_BOOKMARK":
       return {
         ...state,
-        error: action.payload,
+        users: state.users.map((user, index) => {
+          if (index === action.payload.userIndex) {
+            user.favorites.splice(action.payload.movieIndex, 1);
+          }
+          return user;
+        }),
       };
     case "LOG_OUT":
       return {

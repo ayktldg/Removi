@@ -22,9 +22,23 @@
   font-weight: bold;
 }
 
+.nav {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
 .nav a {
   margin: 0 0.5rem;
   font-weight: 500;
+}
+
+.pageLinks {
+  margin-left: 4rem;
+}
+
+.userLinks {
+  margin-left: auto;
 }
 
 .toggleBtn {
@@ -62,8 +76,18 @@
   .nav {
     display: none;
   }
+
+  .pageLinks,
+  .userLinks {
+    display: flex;
+    flex-direction: column;
+    margin-left: 0;
+    align-items: center;
+    justify-content: center;
+  }
+
   .toggleHeader {
-    margin-bottom: 11rem;
+    margin-bottom: 14.9rem;
   }
 
   .toggleNav a,

@@ -6,6 +6,7 @@ import Searchbar from "../../components/Searchbar/Searchbar";
 import { useLocation } from "react-router-dom";
 import MovieList from "../../components/MovieList/MovieList";
 import layout from "../../style/Layout.module.css";
+import styles from "./SearchResultPage.module.css";
 
 const SearchResultPage = () => {
   let searchQuery = useLocation().state.query;
@@ -20,7 +21,7 @@ const SearchResultPage = () => {
   return (
     <div>
       <Navbar />
-      <div className={layout.container}>
+      <div className={`${layout.container} ${styles.page}`}>
         <Searchbar />
         <h2>Search Results</h2>
         {isLoading ? (

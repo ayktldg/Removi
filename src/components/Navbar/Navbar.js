@@ -35,13 +35,18 @@ const Navbar = () => {
           <nav
             className={`${styles.nav} ${isMenuOpen ? styles.toggleNav : ""}`}
           >
-            <Link to="/">Home</Link>
-            <Link to="/top_rated">Top Rated</Link>
-            <Link to="/now_playing">Now Playing</Link>
-            <Link to="/upcoming">Upcoming</Link>
-            <button className={styles.loginBtn} onClick={() => handleLogin()}>
-              {isLoggedIn ? "Logout" : "Login"}
-            </button>
+            <div className={styles.pageLinks}>
+              <Link to="/">Home</Link>
+              <Link to="/top_rated">Top Rated</Link>
+              <Link to="/now_playing">Now Playing</Link>
+              <Link to="/upcoming">Upcoming</Link>
+            </div>
+            <div className={styles.userLinks}>
+              {isLoggedIn && <Link to="/watchlist">Watchlist</Link>}
+              <button className={styles.loginBtn} onClick={() => handleLogin()}>
+                {isLoggedIn ? "Logout" : "Login"}
+              </button>
+            </div>
           </nav>
 
           <button onClick={setIsMenuOpen} className={styles.toggleBtn}>

@@ -33,12 +33,18 @@ export const UserProvider = ({ children }) => {
     }
   };
 
-  const addBookmark = (user) => {
-    dispatch({ type: "ADD_BOOKMARK", payload: user });
-  };
-
-  const removeBookmark = (user) => {
-    dispatch({ type: "REMOVE_BOOKMARK", payload: user });
+  const handleBookmark = (movie) => {
+    const userIndex = state.users.findIndex(
+      (item) => item.id === state.currentUser.id
+    );
+    const movieIndex = state.users[userIndex].favorites.findIndex(
+      (favMovie) => favMovie.id === movie.id
+    );
+    if (movieIndex !== -1) {
+      dispatch({ type: "REMOVE_BOOKMARK", payload: { userIndex, movieIndex } });
+    } else {
+      dispatch({ type: "ADD_BOOKMARK", payload: { userIndex, movie } });
+    }
   };
 
   const logout = (loginStatus) => {
@@ -58,8 +64,7 @@ export const UserProvider = ({ children }) => {
         loginErrorMessage: state.loginErrorMessage,
         addUser,
         setCurrentUser,
-        addBookmark,
-        removeBookmark,
+        handleBookmark,
         logout,
         setLoginErrorMessage,
       }}

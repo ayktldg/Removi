@@ -1,4 +1,4 @@
-import { useContext, useState, useMemo, useEffect } from "react";
+import { useContext, useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
 import Navbar from "../../components/Navbar/Navbar";
@@ -23,7 +23,7 @@ const Login = () => {
     setLoginErrorMessage("");
   }, []);
 
-  const checkUser = useMemo(() => {
+  const checkUser = useCallback(() => {
     currentUser && navigate("/");
   }, [currentUser]);
 

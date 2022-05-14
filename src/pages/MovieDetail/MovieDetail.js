@@ -1,5 +1,6 @@
 import { useContext, useEffect } from "react";
 import MovieContext from "../../context/MovieContext";
+import UserContext from "../../context/UserContext";
 import { useParams } from "react-router-dom";
 import API from "../../utils/api";
 import styles from "./MovieDetail.module.css";
@@ -21,6 +22,12 @@ const MovieDetail = () => {
     getMovieDetail,
     getCast,
   } = useContext(MovieContext);
+
+  const { currentUser, handleBookmark } = useContext(UserContext);
+
+  const isInBookmarks = currentUser.favorites.find(
+    (movie) => movie.id === movieDetail.id
+  );
 
   useEffect(() => {
     getMovieDetail(`/${params.movieId}`);
@@ -87,7 +94,11 @@ const MovieDetail = () => {
                         className={styles.icon}
                         icon={faBookmark}
                       />
-                      <small>Add to watchlist</small>
+                      <small onClick={() => handleBookmark(movieDetail)}>
+                        {isInBookmarks
+                          ? "Remove from watchlist"
+                          : "Add to watchlist"}
+                      </small>
                     </span>
                   </div>
                 </div>
