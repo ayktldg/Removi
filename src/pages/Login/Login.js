@@ -13,18 +13,21 @@ const Login = () => {
   const {
     currentUser,
     setCurrentUser,
-    setLoginErrorMessage,
+    /*  setLoginErrorMessage, */
     loginErrorMessage,
   } = useContext(UserContext);
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
-  useEffect(() => {
+  /*   useEffect(() => {
     setLoginErrorMessage("");
-  }, []);
+  }, []); */
 
   const checkUser = useCallback(() => {
-    currentUser && navigate("/");
+    console.log(currentUser);
+    if (currentUser) {
+      navigate("/");
+    }
   }, [currentUser]);
 
   const handleSubmit = (e) => {

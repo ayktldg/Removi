@@ -23,7 +23,7 @@ const MovieDetail = () => {
     getCast,
   } = useContext(MovieContext);
 
-  const { currentUser, handleBookmark } = useContext(UserContext);
+  const { currentUser, handleBookmarks } = useContext(UserContext);
 
   const isInBookmarks = currentUser.favorites.find(
     (movie) => movie.id === movieDetail.id
@@ -94,7 +94,7 @@ const MovieDetail = () => {
                         className={styles.icon}
                         icon={faBookmark}
                       />
-                      <small onClick={() => handleBookmark(movieDetail)}>
+                      <small onClick={() => handleBookmarks(movieDetail)}>
                         {isInBookmarks
                           ? "Remove from watchlist"
                           : "Add to watchlist"}

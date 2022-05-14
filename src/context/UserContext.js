@@ -24,26 +24,13 @@ export const UserProvider = ({ children }) => {
         item.userName === user.userName && item.password === user.password
     );
     if (index !== -1) {
+      setLoginErrorMessage("");
       dispatch({
         type: "SET_CURRENT_USER",
-        payload: state.users[index],
+        payload: index,
       });
     } else {
       setLoginErrorMessage("User not found. check username and password");
-    }
-  };
-
-  const handleBookmark = (movie) => {
-    const userIndex = state.users.findIndex(
-      (item) => item.id === state.currentUser.id
-    );
-    const movieIndex = state.users[userIndex].favorites.findIndex(
-      (favMovie) => favMovie.id === movie.id
-    );
-    if (movieIndex !== -1) {
-      dispatch({ type: "REMOVE_BOOKMARK", payload: { userIndex, movieIndex } });
-    } else {
-      dispatch({ type: "ADD_BOOKMARK", payload: { userIndex, movie } });
     }
   };
 
@@ -55,6 +42,46 @@ export const UserProvider = ({ children }) => {
     dispatch({ type: "SET_LOGIN_ERR_MSG", payload: message });
   };
 
+  const handleBookmarks = (movie) => {
+    const userIndex = findUserIndex();
+    const movieIndex = findFavMovieIndex(userIndex, movie);
+    if (movieIndex === -1) {
+      const updatedUsers = addToWatchList(userIndex, movie);
+      dispatch({ type: "HANDLE_BOOKMARKS", payload: updatedUsers });
+    } else {
+      const filteredUsers = removeFromWatchList(userIndex, movieIndex);
+      dispatch({ type: "HANDLE_BOOKMARKS", payload: filteredUsers });
+    }
+  };
+
+  const findUserIndex = () => {
+    state.users.findIndex((item) => item.id === state.currentUser.id);
+  };
+
+  const findFavMovieIndex = (userIndex, movie) => {
+    state.users[userIndex].favorites.findIndex(
+      (favMovie) => favMovie.id === movie.id
+    );
+  };
+
+  const addToWatchList = (userIndex, movie) => {
+    return state.users.map((user, index) => {
+      if (index === userIndex) {
+        user.favorites.push(movie);
+      }
+      return user;
+    });
+  };
+
+  const removeFromWatchList = (userIndex, movieIndex) => {
+    return state.users.map((user, index) => {
+      if (index === userIndex) {
+        user.favorites.splice(movieIndex, 1);
+      }
+      return user;
+    });
+  };
+
   return (
     <UserContext.Provider
       value={{
@@ -64,7 +91,7 @@ export const UserProvider = ({ children }) => {
         loginErrorMessage: state.loginErrorMessage,
         addUser,
         setCurrentUser,
-        handleBookmark,
+        handleBookmarks,
         logout,
         setLoginErrorMessage,
       }}

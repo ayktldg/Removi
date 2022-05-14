@@ -8,32 +8,18 @@ const reducer = (state, action) => {
     case "SET_CURRENT_USER":
       return {
         ...state,
-        currentUser: action.payload,
+        currentUser: state.users[action.payload],
         isLoggedIn: true,
       };
-    case "ADD_BOOKMARK":
+    case "HANDLE_BOOKMARKS":
       return {
         ...state,
-        users: state.users.map((user, index) => {
-          index === action.payload.userIndex &&
-            user.favorites.push(action.payload.movie);
-          return user;
-        }),
-      };
-    case "REMOVE_BOOKMARK":
-      return {
-        ...state,
-        users: state.users.map((user, index) => {
-          if (index === action.payload.userIndex) {
-            user.favorites.splice(action.payload.movieIndex, 1);
-          }
-          return user;
-        }),
+        users: action.payload,
       };
     case "LOG_OUT":
       return {
         ...state,
-        currentUser: {},
+        currentUser: null,
         isLoggedIn: action.payload,
       };
     case "SET_LOGIN_ERR_MSG":
