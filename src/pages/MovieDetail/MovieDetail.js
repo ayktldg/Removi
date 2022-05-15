@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useMemo } from "react";
 import MovieContext from "../../context/MovieContext";
 import UserContext from "../../context/UserContext";
 import { useParams } from "react-router-dom";
@@ -25,9 +25,9 @@ const MovieDetail = () => {
 
   const { currentUser, handleBookmarks } = useContext(UserContext);
 
-  const isInBookmarks = currentUser.favorites.find(
-    (movie) => movie.id === movieDetail.id
-  );
+  const isInBookmarks = currentUser
+    ? currentUser.favorites.find((movie) => movie.id === movieDetail.id)
+    : false;
 
   useEffect(() => {
     getMovieDetail(`/${params.movieId}`);
@@ -89,17 +89,19 @@ const MovieDetail = () => {
                       <FontAwesomeIcon className={styles.icon} icon={faPlay} />
                       <small>Play trailer</small>
                     </span>
-                    <span className={styles.iconWrapper}>
-                      <FontAwesomeIcon
-                        className={styles.icon}
-                        icon={faBookmark}
-                      />
-                      <small onClick={() => handleBookmarks(movieDetail)}>
-                        {isInBookmarks
-                          ? "Remove from watchlist"
-                          : "Add to watchlist"}
-                      </small>
-                    </span>
+                    {currentUser && (
+                      <span className={styles.iconWrapper}>
+                        <FontAwesomeIcon
+                          className={styles.icon}
+                          icon={faBookmark}
+                        />
+                        <small onClick={() => handleBookmarks(movieDetail)}>
+                          {isInBookmarks
+                            ? "Remove from watchlist"
+                            : "Add to watchlist"}
+                        </small>
+                      </span>
+                    )}
                   </div>
                 </div>
                 <p className={styles.tagline}>{movieDetail.tagline}</p>

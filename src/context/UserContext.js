@@ -42,6 +42,16 @@ export const UserProvider = ({ children }) => {
     dispatch({ type: "SET_LOGIN_ERR_MSG", payload: message });
   };
 
+  const findUserIndex = () => {
+    return state.users.findIndex((item) => item.id === state.currentUser.id);
+  };
+
+  const findFavMovieIndex = (userIndex, movie) => {
+    return state.users[userIndex].favorites.findIndex(
+      (favMovie) => favMovie.id === movie.id
+    );
+  };
+
   const handleBookmarks = (movie) => {
     const userIndex = findUserIndex();
     const movieIndex = findFavMovieIndex(userIndex, movie);
@@ -52,16 +62,6 @@ export const UserProvider = ({ children }) => {
       const filteredUsers = removeFromWatchList(userIndex, movieIndex);
       dispatch({ type: "HANDLE_BOOKMARKS", payload: filteredUsers });
     }
-  };
-
-  const findUserIndex = () => {
-    state.users.findIndex((item) => item.id === state.currentUser.id);
-  };
-
-  const findFavMovieIndex = (userIndex, movie) => {
-    state.users[userIndex].favorites.findIndex(
-      (favMovie) => favMovie.id === movie.id
-    );
   };
 
   const addToWatchList = (userIndex, movie) => {
