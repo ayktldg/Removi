@@ -81,27 +81,13 @@ const MovieDetail = () => {
                     <small className={styles.rankType}>IMDB Rank</small>
                   </div>
                   <div className={styles.icons}>
-                    {movieDetail.videos.results.length > 0 ? (
-                      <span
-                        className={styles.iconWrapper}
-                        onClick={() => handleTrailerPlay(true)}
-                      >
-                        <FontAwesomeIcon
-                          className={styles.icon}
-                          icon={faPlay}
-                        />
-                        <small>Play trailer</small>
-                      </span>
-                    ) : (
-                      <span className={styles.iconWrapper}>
-                        <FontAwesomeIcon
-                          className={styles.icon}
-                          icon={faPlay}
-                        />
-                        <small>No trailer</small>
-                      </span>
-                    )}
-
+                    <span
+                      className={styles.iconWrapper}
+                      onClick={() => handleTrailerPlay(true)}
+                    >
+                      <FontAwesomeIcon className={styles.icon} icon={faPlay} />
+                      <small>Play trailer</small>
+                    </span>
                     {currentUser && (
                       <span className={styles.iconWrapper}>
                         <FontAwesomeIcon
