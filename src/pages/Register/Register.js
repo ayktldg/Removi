@@ -9,17 +9,41 @@ import layout from "../../style/Layout.module.css";
 import form from "../../style/Form.module.css";
 
 const Register = () => {
-  const { addUser } = useContext(UserContext);
+  const { addUser, users } = useContext(UserContext);
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const checkEmail = () => {
+    if (users.length > 0) {
+      return users.find((user) => user.email === email);
+    }
+    return false;
+  };
+
+  const checkUserName = () => {
+    if (users.length > 0) {
+      return users.find((user) => user.userName === userName);
+    }
+    return false;
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const id = uuidv4();
-    addUser({ id, email, userName, password });
-    navigate("/login");
+    const isEmailTaken = checkEmail();
+    const isUserNameTaken = checkUserName();
+    if (isEmailTaken) {
+      setErrorMsg("This email has already been taken!");
+    } else if (isUserNameTaken) {
+      setErrorMsg("This username has already been taken!");
+    } else {
+      const id = uuidv4();
+      addUser({ id, email, userName, password });
+      navigate("/login");
+      setErrorMsg("");
+    }
   };
   return (
     <div>
@@ -27,6 +51,7 @@ const Register = () => {
       <div className={form.page}>
         <div className={`${form.formWrapper} ${layout.container}`}>
           <h2 className={styles.title}>Register for millions of movies.</h2>
+          {errorMsg && <p>{errorMsg}</p>}
           <form onSubmit={handleSubmit} className={form.form}>
             <div className={form.formGroup}>
               <label htmlFor="email">Email</label>

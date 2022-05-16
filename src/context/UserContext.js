@@ -19,19 +19,10 @@ export const UserProvider = ({ children }) => {
   };
 
   const setCurrentUser = (user) => {
-    const index = state.users.findIndex(
-      (item) =>
-        item.userName === user.userName && item.password === user.password
-    );
-    if (index !== -1) {
-      setLoginErrorMessage("");
-      dispatch({
-        type: "SET_CURRENT_USER",
-        payload: index,
-      });
-    } else {
-      setLoginErrorMessage("User not found. check username and password");
-    }
+    dispatch({
+      type: "SET_CURRENT_USER",
+      payload: user,
+    });
   };
 
   const logout = (loginStatus) => {

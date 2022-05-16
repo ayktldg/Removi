@@ -9,31 +9,28 @@ import layout from "../../style/Layout.module.css";
 import form from "../../style/Form.module.css";
 
 const Login = () => {
-  const navigate = useNavigate();
-  const {
-    currentUser,
-    setCurrentUser,
-    /*  setLoginErrorMessage, */
-    loginErrorMessage,
-  } = useContext(UserContext);
+  let navigate = useNavigate();
+  const { users, setCurrentUser } = useContext(UserContext);
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
-  /*   useEffect(() => {
-    setLoginErrorMessage("");
-  }, []); */
-
-  const checkUser = useCallback(() => {
-    console.log(currentUser);
-    if (currentUser) {
-      navigate("/");
-    }
-  }, [currentUser]);
+  const checkUser = () => {
+    return users.find(
+      (user) => user.userName === userName && user.password === password
+    );
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setCurrentUser({ userName, password });
-    checkUser();
+    const isLoggedIn = checkUser();
+    if (isLoggedIn) {
+      setCurrentUser({ userName, password });
+      navigate("/");
+      setErrorMessage("");
+    } else {
+      setErrorMessage("User not found. check username and password");
+    }
   };
 
   return (
@@ -42,8 +39,8 @@ const Login = () => {
       <div className={form.page}>
         <div className={`${form.formWrapper} ${layout.container}`}>
           <h2>Please Sign In</h2>
-          {loginErrorMessage && (
-            <p className={styles.errorMessage}>{loginErrorMessage}</p>
+          {errorMessage && (
+            <p className={styles.errorMessage}>{errorMessage}</p>
           )}
           <form onSubmit={handleSubmit} className={form.form}>
             <div className={form.formGroup}>
