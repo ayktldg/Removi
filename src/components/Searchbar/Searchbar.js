@@ -1,4 +1,3 @@
-import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import debounce from "lodash/debounce";
 import API from "../../utils/api";
@@ -7,15 +6,12 @@ import styles from "./Searchbar.module.css";
 const Searchbar = () => {
   let navigate = useNavigate();
 
-  const handleSearchMovie = useMemo(
-    () =>
-      debounce((e) => {
-        if (e) {
-          navigate(`/${API.SEARCH}${API.MOVIE}/${e}`, { state: { query: e } });
-        }
-      }, 800),
-    []
-  );
+  const handleSearchMovie = debounce((e) => {
+    console.log("hello");
+    if (e) {
+      navigate(`/${API.SEARCH}${API.MOVIE}/${e}`, { state: { query: e } });
+    }
+  }, 800);
 
   return (
     <div>
