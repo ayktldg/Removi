@@ -5,6 +5,18 @@
 ---
 Removi is a movie searching and listing application created using the Tmdb API. The user can get information about the movie by going to the details of the movies and can watch the trailers.
 
+### Demo
+
+Online deployment of this project is available at [Removi](https://removi.vercel.app/).
+
+You can use the below credentials to test the app.
+
+```
+email: johndoe@gmail.com
+username: johndoe
+password: 1234test
+```
+
 ### Technologies
 
 React, React Router, Context Api, Axios, Tmdb Api
