@@ -1,0 +1,13 @@
+.errorMessage {
+  width: 40%;
+  background-color: red;
+  color: white;
+  padding: 0.5rem;
+  font-weight: bold;
+}
+
+@media (max-width: 576px) {
+  .title {
+    font-size: 1.5em;
+  }
+}

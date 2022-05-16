@@ -1,11 +1,11 @@
-import Navbar from "../../components/Navbar/Navbar";
 import { useContext, useEffect } from "react";
 import MovieContext from "../../context/MovieContext";
+import Navbar from "../../components/Navbar/Navbar";
 import Searchbar from "../../components/Searchbar/Searchbar";
 import Footer from "../../components/Footer/Footer";
 import MovieList from "../../components/MovieList/MovieList";
-import layout from "../../style/Layout.module.css";
 import styles from "./Home.module.css";
+import layout from "../../style/Layout.module.css";
 
 const Home = () => {
   const { movies, isLoading, error, pageTitle, getMovieByFeature } =

@@ -1,5 +1,5 @@
 .card {
-  height: 20rem;
+  min-height: 22rem;
   border: none;
   border-radius: 0.5rem;
   box-shadow: 0 0.1rem 0.3rem rgba(0, 0, 0, 0.3);
@@ -21,13 +21,15 @@
 
 .body {
   position: relative;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  padding: 0 0.5rem 0.5rem 0.5rem;
+  height: 8rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .rank {
   position: absolute;
-  top: -2.5rem;
+  top: -1rem;
   right: 1rem;
   background-color: rgb(13, 3, 61);
   border: 2px solid yellowgreen;
@@ -52,10 +54,28 @@
   color: rgb(83, 83, 83);
 }
 
+.removeBtn {
+  font-family: inherit;
+  display: block;
+  width: 100%;
+  cursor: pointer;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  border: none;
+  padding: 0.4rem 0;
+  margin-top: auto;
+}
+
+.removeBtn:hover {
+  background-color: #0b072c;
+  color: #fff;
+}
+
 @media (max-width: 576px) {
   .card {
     height: 29rem;
   }
+
   .imageWrapper {
     height: 22rem;
   }

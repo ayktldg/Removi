@@ -1,17 +1,17 @@
 import { useContext, useEffect } from "react";
 import MovieContext from "../../context/MovieContext";
+import UserContext from "../../context/UserContext";
 import { useParams } from "react-router-dom";
 import API from "../../utils/api";
-import styles from "./MovieDetail.module.css";
-import layout from "../../style/Layout.module.css";
 import Navbar from "../../components/Navbar/Navbar";
 import CastList from "../../components/CastList/CastList";
+import MovieFrame from "../../components/MovieFrame/MovieFrame";
+import styles from "./MovieDetail.module.css";
+import layout from "../../style/Layout.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookmark, faPlay } from "@fortawesome/free-solid-svg-icons";
-import MovieFrame from "../../components/MovieFrame/MovieFrame";
 
 const MovieDetail = () => {
-  const params = useParams();
   const {
     movieDetail,
     cast,
@@ -21,6 +21,12 @@ const MovieDetail = () => {
     getMovieDetail,
     getCast,
   } = useContext(MovieContext);
+  const { currentUser, handleBookmarks } = useContext(UserContext);
+  const params = useParams();
+
+  const isInBookmarks = currentUser
+    ? currentUser.favorites.find((movie) => movie.id === movieDetail.id)
+    : false;
 
   useEffect(() => {
     getMovieDetail(`/${params.movieId}`);
@@ -82,13 +88,19 @@ const MovieDetail = () => {
                       <FontAwesomeIcon className={styles.icon} icon={faPlay} />
                       <small>Play trailer</small>
                     </span>
-                    <span className={styles.iconWrapper}>
-                      <FontAwesomeIcon
-                        className={styles.icon}
-                        icon={faBookmark}
-                      />
-                      <small>Add to watchlist</small>
-                    </span>
+                    {currentUser && (
+                      <span className={styles.iconWrapper}>
+                        <FontAwesomeIcon
+                          className={styles.icon}
+                          icon={faBookmark}
+                        />
+                        <small onClick={() => handleBookmarks(movieDetail)}>
+                          {isInBookmarks
+                            ? "Remove from watchlist"
+                            : "Add to watchlist"}
+                        </small>
+                      </span>
+                    )}
                   </div>
                 </div>
                 <p className={styles.tagline}>{movieDetail.tagline}</p>

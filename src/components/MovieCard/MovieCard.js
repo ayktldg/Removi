@@ -1,8 +1,19 @@
-import styles from "./MovieCard.module.css";
+import { useContext } from "react";
+import UserContext from "../../context/UserContext";
+import { useLocation, Link } from "react-router-dom";
 import API from "../../utils/api";
-import { Link } from "react-router-dom";
+import styles from "./MovieCard.module.css";
 
 const MovieCard = ({ movie }) => {
+  const { handleBookmarks } = useContext(UserContext);
+  const pathname = useLocation().pathname;
+
+  const handleRemoveBtn = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    handleBookmarks(movie);
+  };
+
   return (
     <Link to={`/movie_detail/${movie.id}`}>
       <li className={styles.card}>
@@ -17,6 +28,11 @@ const MovieCard = ({ movie }) => {
           <span className={styles.rank}>{movie.vote_average}</span>
           <h5 className={styles.title}>{movie.title}</h5>
           <span className={styles.date}>{movie.release_date}</span>
+          {pathname === "/watchlist" && (
+            <button onClick={handleRemoveBtn} className={styles.removeBtn}>
+              Remove
+            </button>
+          )}
         </div>
       </li>
     </Link>
