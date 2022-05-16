@@ -1,12 +1,9 @@
 .errorMessage {
+  width: 40%;
   background-color: red;
   color: white;
   padding: 0.5rem;
   font-weight: bold;
-}
-
-.errorMessage {
-  width: 40%;
 }
 
 .registerLink:hover {

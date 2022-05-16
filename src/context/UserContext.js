@@ -17,10 +17,10 @@ export const UserProvider = ({ children }) => {
     dispatch({ type: "ADD_USER", payload: user });
   };
 
-  const setCurrentUser = (user) => {
+  const setCurrentUser = (index) => {
     dispatch({
       type: "SET_CURRENT_USER",
-      payload: user,
+      payload: index,
     });
   };
 

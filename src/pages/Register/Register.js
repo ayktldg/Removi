@@ -51,7 +51,9 @@ const Register = () => {
       <div className={form.page}>
         <div className={`${form.formWrapper} ${layout.container}`}>
           <h2 className={styles.title}>Register for millions of movies.</h2>
-          {errorMessage && <p>{errorMessage}</p>}
+          {errorMessage && (
+            <p className={styles.errorMessage}>{errorMessage}</p>
+          )}
           <form onSubmit={handleSubmit} className={form.form}>
             <div className={form.formGroup}>
               <label htmlFor="email">Email</label>

@@ -15,20 +15,20 @@ const Login = () => {
   let navigate = useNavigate();
 
   const checkUser = () => {
-    return users.find(
+    return users.findIndex(
       (user) => user.userName === userName && user.password === password
     );
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const isCorrectLogin = checkUser();
-    if (isCorrectLogin) {
-      setCurrentUser({ userName, password });
+    const userIndex = checkUser();
+    if (userIndex !== -1) {
+      setCurrentUser(userIndex);
       navigate("/");
       setErrorMessage("");
     } else {
-      setErrorMessage("User not found. check username and password");
+      setErrorMessage("User not found. Check username and password");
     }
   };
 

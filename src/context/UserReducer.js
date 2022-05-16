@@ -8,7 +8,7 @@ const reducer = (state, action) => {
     case "SET_CURRENT_USER":
       return {
         ...state,
-        currentUser: action.payload,
+        currentUser: state.users[action.payload],
         isLoggedIn: true,
       };
     case "HANDLE_BOOKMARKS":
