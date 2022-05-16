@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import MovieContext from "../../context/MovieContext";
-import styles from "./MovieFrame.module.css";
 import API from "../../utils/api";
+import styles from "./MovieFrame.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRectangleXmark } from "@fortawesome/free-solid-svg-icons";
 

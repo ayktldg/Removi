@@ -1,16 +1,15 @@
-import Navbar from "../../components/Navbar/Navbar";
-import Footer from "../../components/Footer/Footer";
-import { useLocation } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import MovieContext from "../../context/MovieContext";
+import { useLocation } from "react-router-dom";
+import Navbar from "../../components/Navbar/Navbar";
 import MovieList from "../../components/MovieList/MovieList";
+import Footer from "../../components/Footer/Footer";
 import layout from "../../style/Layout.module.css";
 
 const MoviesByFeature = () => {
-  const endpoint = useLocation().pathname;
-
   const { movies, isLoading, error, pageTitle, getMovieByFeature } =
     useContext(MovieContext);
+  const endpoint = useLocation().pathname;
 
   useEffect(() => {
     getMovieByFeature(endpoint);

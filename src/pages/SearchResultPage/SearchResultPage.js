@@ -1,18 +1,17 @@
-import Navbar from "../../components/Navbar/Navbar";
-import Footer from "../../components/Footer/Footer";
 import { useContext, useEffect } from "react";
 import MovieContext from "../../context/MovieContext";
-import Searchbar from "../../components/Searchbar/Searchbar";
 import { useLocation } from "react-router-dom";
+import Navbar from "../../components/Navbar/Navbar";
+import Searchbar from "../../components/Searchbar/Searchbar";
 import MovieList from "../../components/MovieList/MovieList";
-import layout from "../../style/Layout.module.css";
+import Footer from "../../components/Footer/Footer";
 import styles from "./SearchResultPage.module.css";
+import layout from "../../style/Layout.module.css";
 
 const SearchResultPage = () => {
-  let searchQuery = useLocation().state.query;
-
   const { movies, isLoading, error, getMovieBySearch } =
     useContext(MovieContext);
+  let searchQuery = useLocation().state.query;
 
   useEffect(() => {
     getMovieBySearch(searchQuery);

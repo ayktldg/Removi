@@ -1,10 +1,10 @@
-import Navbar from "../../components/Navbar/Navbar";
-import Footer from "../../components/Footer/Footer";
 import { useContext } from "react";
 import UserContext from "../../context/UserContext";
+import Navbar from "../../components/Navbar/Navbar";
 import MovieList from "../../components/MovieList/MovieList";
-import layout from "../../style/Layout.module.css";
+import Footer from "../../components/Footer/Footer";
 import styles from "./Watchlist.module.css";
+import layout from "../../style/Layout.module.css";
 
 const Watchlist = () => {
   const { currentUser } = useContext(UserContext);

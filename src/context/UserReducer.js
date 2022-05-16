@@ -22,11 +22,6 @@ const reducer = (state, action) => {
         currentUser: null,
         isLoggedIn: action.payload,
       };
-    case "SET_LOGIN_ERR_MSG":
-      return {
-        ...state,
-        loginErrorMessage: action.payload,
-      };
     default:
       return state;
   }

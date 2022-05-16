@@ -1,18 +1,17 @@
-import { useContext, useEffect, useMemo } from "react";
+import { useContext, useEffect } from "react";
 import MovieContext from "../../context/MovieContext";
 import UserContext from "../../context/UserContext";
 import { useParams } from "react-router-dom";
 import API from "../../utils/api";
-import styles from "./MovieDetail.module.css";
-import layout from "../../style/Layout.module.css";
 import Navbar from "../../components/Navbar/Navbar";
 import CastList from "../../components/CastList/CastList";
+import MovieFrame from "../../components/MovieFrame/MovieFrame";
+import styles from "./MovieDetail.module.css";
+import layout from "../../style/Layout.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookmark, faPlay } from "@fortawesome/free-solid-svg-icons";
-import MovieFrame from "../../components/MovieFrame/MovieFrame";
 
 const MovieDetail = () => {
-  const params = useParams();
   const {
     movieDetail,
     cast,
@@ -22,8 +21,8 @@ const MovieDetail = () => {
     getMovieDetail,
     getCast,
   } = useContext(MovieContext);
-
   const { currentUser, handleBookmarks } = useContext(UserContext);
+  const params = useParams();
 
   const isInBookmarks = currentUser
     ? currentUser.favorites.find((movie) => movie.id === movieDetail.id)

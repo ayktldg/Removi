@@ -1,9 +1,8 @@
-import styles from "./MovieCard.module.css";
-import API from "../../utils/api";
-import { Link } from "react-router-dom";
 import { useContext } from "react";
 import UserContext from "../../context/UserContext";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
+import API from "../../utils/api";
+import styles from "./MovieCard.module.css";
 
 const MovieCard = ({ movie }) => {
   const { handleBookmarks } = useContext(UserContext);

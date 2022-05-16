@@ -1,6 +1,6 @@
-import layout from "../../style/Layout.module.css";
-import styles from "./MovieList.module.css";
 import MovieCard from "../MovieCard/MovieCard";
+import styles from "./MovieList.module.css";
+import layout from "../../style/Layout.module.css";
 
 const MovieList = ({ movies }) => {
   return (

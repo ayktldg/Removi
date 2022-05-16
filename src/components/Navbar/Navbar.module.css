@@ -10,6 +10,7 @@
 .header a:hover {
   color: rgb(176, 176, 176);
 }
+
 .wrapper {
   height: 7rem;
   display: flex;
@@ -94,6 +95,7 @@
   .loginBtn {
     margin-bottom: 1.6rem;
   }
+
   .toggleNav {
     position: absolute;
     left: 0;
@@ -105,6 +107,7 @@
     align-items: center;
     background-color: #0b072c;
   }
+
   .toggleBtn {
     display: block;
   }

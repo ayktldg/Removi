@@ -7,6 +7,7 @@ import {
   faLinkedin,
   faCodepen,
 } from "@fortawesome/free-brands-svg-icons";
+
 const Footer = () => {
   return (
     <footer className={footerStyle.footer}>

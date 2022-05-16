@@ -1,10 +1,10 @@
+import { MovieProvider } from "./context/MovieContext";
+import { UserProvider } from "./context/UserContext";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import MoviesByFeature from "./pages/MoviesByFeature/MoviesByFeature";
 import SearchResultPage from "./pages/SearchResultPage/SearchResultPage";
 import Watchlist from "./pages/Watchlist/Watchlist";
-import { MovieProvider } from "./context/MovieContext";
-import { UserProvider } from "./context/UserContext";
 import MovieDetail from "./pages/MovieDetail/MovieDetail";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";

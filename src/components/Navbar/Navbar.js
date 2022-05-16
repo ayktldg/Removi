@@ -1,15 +1,15 @@
-import useToggle from "../../hooks/useToggle";
-import { Link, useNavigate } from "react-router-dom";
-import layout from "../../style/Layout.module.css";
-import styles from "./Navbar.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { useContext } from "react";
 import UserContext from "../../context/UserContext";
+import { Link, useNavigate } from "react-router-dom";
+import useToggle from "../../hooks/useToggle";
+import styles from "./Navbar.module.css";
+import layout from "../../style/Layout.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useToggle();
   const { isLoggedIn, logout } = useContext(UserContext);
+  const [isMenuOpen, setIsMenuOpen] = useToggle();
   const navigate = useNavigate();
 
   const handleLogin = () => {
@@ -48,7 +48,6 @@ const Navbar = () => {
               </button>
             </div>
           </nav>
-
           <button onClick={setIsMenuOpen} className={styles.toggleBtn}>
             <FontAwesomeIcon className={styles.icon} icon={faBars} />
           </button>

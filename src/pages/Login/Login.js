@@ -1,19 +1,18 @@
-import { useContext, useState, useEffect, useCallback } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import UserContext from "../../context/UserContext";
+import { Link, useNavigate } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
 import Navbar from "../../components/Navbar/Navbar";
 import styles from "./Login.module.css";
-import UserContext from "../../context/UserContext";
-import { useNavigate } from "react-router-dom";
 import layout from "../../style/Layout.module.css";
 import form from "../../style/Form.module.css";
 
 const Login = () => {
-  let navigate = useNavigate();
-  const { users, setCurrentUser } = useContext(UserContext);
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const { users, setCurrentUser } = useContext(UserContext);
+  let navigate = useNavigate();
 
   const checkUser = () => {
     return users.find(
@@ -23,8 +22,8 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const isLoggedIn = checkUser();
-    if (isLoggedIn) {
+    const isCorrectLogin = checkUser();
+    if (isCorrectLogin) {
       setCurrentUser({ userName, password });
       navigate("/");
       setErrorMessage("");
