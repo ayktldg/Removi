@@ -122,5 +122,6 @@
 @media (max-width: 768px) {
   .detailGrid {
     grid-template-columns: 1fr;
+    padding-top: 5rem;
   }
 }

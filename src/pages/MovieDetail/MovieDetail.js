@@ -6,6 +6,7 @@ import API from "../../utils/api";
 import Navbar from "../../components/Navbar/Navbar";
 import CastList from "../../components/CastList/CastList";
 import MovieFrame from "../../components/MovieFrame/MovieFrame";
+import Footer from "../../components/Footer/Footer";
 import styles from "./MovieDetail.module.css";
 import layout from "../../style/Layout.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -113,6 +114,7 @@ const MovieDetail = () => {
       )}
       {isLoading ? <h2>Loading</h2> : <CastList cast={cast} />}
       {isTrailerPlay && <MovieFrame path={movieDetail.videos.results[0].key} />}
+      <Footer />
     </>
   );
 };
